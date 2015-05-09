@@ -16,8 +16,26 @@ module.exports = function(config) {
     // testing framework to use (jasmine/mocha/qunit/...)
     // as well as any additional frameworks (requirejs/chai/sinon/...)
     frameworks: [
-      "jasmine"
+      'jasmine'
     ],
+
+    reporters: [
+      'spec',
+      'coverage'
+    ],
+
+    preprocessors: {
+      // source files, that you wanna generate coverage for
+      // do not include tests or libraries
+      // (these files will be instrumented by Istanbul)
+      'app/scripts/**/*.js': ['coverage']
+    },
+
+    // optionally, configure the reporter
+    coverageReporter: {
+      type : 'lcov',
+      dir : 'coverage/'
+    },
 
     // list of files / patterns to load in the browser
     files: [
@@ -29,11 +47,12 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
+      'bower_components/ngcart/dist/ngCart.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
-      "app/scripts/**/*.js",
-      "test/mock/**/*.js",
-      "test/spec/**/*.js"
+      'app/scripts/**/*.js',
+      // 'test/mock/**/*.js',
+      'test/spec/**/*.js'
     ],
 
     // list of files / patterns to exclude
@@ -52,13 +71,15 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      "PhantomJS"
+      'PhantomJS'
     ],
 
     // Which plugins to enable
     plugins: [
-      "karma-phantomjs-launcher",
-      "karma-jasmine"
+      'karma-phantomjs-launcher',
+      'karma-spec-reporter',
+      'karma-jasmine',
+      'karma-coverage'
     ],
 
     // Continuous Integration mode

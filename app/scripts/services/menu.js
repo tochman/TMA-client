@@ -1,10 +1,7 @@
-app.factory('Menu', ['$resource', function($resource) {
-  function Menu() {
-  	var base_url = 'localhost:3000/v1';
-    this.service = $resource(base_url + '/menus/:menuId', {menuId: '@id'});
-  };
-  Menu.prototype.all = function() {
-    return this.service.query();
-  };
-  return new Menu;
-}]);
+'use strict';
+
+app.factory('Menu', function($resource) {
+  return $resource('//tma-develop.herokuapp.com/v1/menus', null, {
+    'getMenus': { methods: 'GET', isArray: false }
+  });
+});

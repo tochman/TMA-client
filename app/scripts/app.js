@@ -36,6 +36,10 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/checkout.html',
       controller: 'CheckoutCtrl'
     })
+    .when('/login', {
+      templateUrl: 'views/login.html',
+      controller: 'LoginCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });

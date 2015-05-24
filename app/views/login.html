@@ -1,0 +1,10 @@
+  <form ng-submit="login()" class="well form-inline">
+    <h3>Login</h3>
+    <input ng-model="user.email" type="text" val="Your email" placeholder="Email">
+    <input ng-model="user.password" type="password" val="password" placeholder="Password">
+    <button type="submit" class="btn">Log in</button>
+    <button ng-click="signup()" class="btn">Sign up</button>
+  </form>
+  <div ng-show="user.errors">
+    <h2>{{ user.errors }}</h2>
+  </div>
